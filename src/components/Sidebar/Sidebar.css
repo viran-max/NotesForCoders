@@ -73,6 +73,31 @@
 .close-sidebar {
   display: none;
 }
+/* =========================
+   MOBILE OVERLAY
+========================= */
+
+.sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+
+  z-index: 9998;
+
+  animation: fadeIn 0.25s ease;
+}
+
+/* animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /* =========================
    TABLET RESPONSIVE
@@ -100,35 +125,44 @@
 ========================= */
 
 @media (max-width: 768px) {
+
   .sidebar {
     width: 280px;
+    max-width: 85%;
+
     height: 100vh;
-    min-height: 100vh;
 
     position: fixed;
     top: 0;
     left: -100%;
-
-    border-right: 1px solid var(--border);
-    border-bottom: none;
 
     padding: 24px;
 
     display: flex;
     flex-direction: column;
 
-    transition: all 0.35s ease;
-    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.2);
+    background: var(--card);
+
+    border-right: 1px solid var(--border);
+
+    z-index: 99999;
+
+    transition: left 0.35s ease;
+
+    overflow-y: auto;
+
+    box-shadow: 10px 0 40px rgba(0,0,0,0.35);
   }
 
-  /* Open sidebar */
+  /* OPEN */
   .sidebar.active {
     left: 0;
   }
 
-  /* Close button visible only on mobile */
+  /* CLOSE BUTTON */
   .close-sidebar {
     display: flex;
+
     align-items: center;
     justify-content: center;
 
@@ -136,41 +170,51 @@
     height: 42px;
 
     border: none;
-    outline: none;
     cursor: pointer;
 
     background: var(--accent);
-    color: var(--text);
+    color: white;
 
     border-radius: 12px;
+
     font-size: 22px;
     font-weight: bold;
 
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+
+    align-self: flex-end;
+
+    flex-shrink: 0;
   }
 
   .sidebar h2 {
     margin-bottom: 30px;
-    font-size: 20px;
-    text-align: left;
+    font-size: 22px;
   }
 
   .sidebar nav {
+    display: flex;
     flex-direction: column;
     gap: 14px;
   }
 
   .sidebar a {
     width: 100%;
-    font-size: 15px;
-    padding: 12px 14px;
-  }
+    padding: 14px 16px;
 
-  .sidebar a:hover {
-    transform: none;
+    border-radius: 14px;
+
+    font-size: 15px;
+
+    background: transparent;
   }
 
   .sidebar a.active {
+    background: var(--accent);
+    color: white;
+  }
+
+  .sidebar a:hover {
     transform: none;
   }
 }
