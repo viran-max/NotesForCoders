@@ -1,0 +1,136 @@
+/* MAIN WRAPPER */
+.allnotes-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  background: var(--bg);
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+
+  height: 100vh;
+  overflow-y: auto;
+
+  padding: 20px;
+
+  min-width: 0;
+  max-width: 100%;   
+  box-sizing: border-box;
+}
+
+/* WRAPPER */
+.notes-wrapper {
+  width: 100%;
+  color: var(--text);
+}
+
+/* TITLE */
+.notes-wrapper h1 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+/* SEARCH INPUT */
+.search-input {
+  width: 100%;
+  padding: 14px;
+
+  margin-bottom: 20px;
+
+  border: 1px solid var(--border);
+  border-radius: 12px;
+
+  background: var(--input);
+  color: var(--text);
+
+  outline: none;
+  font-size: 15px;
+}
+
+/* GRID SYSTEM */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+
+  width: 100%;
+}
+
+/* NOTE CARD CONTAINER (fallback safety) */
+.note-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* TEXT SAFETY */
+.note-card p {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* CODE BLOCK SAFETY */
+.note-card pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+
+  overflow-x: auto;
+  max-width: 100%;
+}
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 992px) {
+  .main-content {
+  flex: 1;
+  margin-left: 260px;
+
+  height: 100vh;        /* full screen height */
+  overflow-y: auto;   
+
+  padding: 20px;
+}
+
+  .notes-grid {
+    grid-template-columns: 1fr; /* tablet */
+  }
+}
+
+/* =========================
+   MOBILE FIX (MOST IMPORTANT)
+========================= */
+@media (max-width: 768px) {
+  .allnotes-container {
+    flex-direction: column;
+  }
+
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr; /* mobile */
+  }
+
+  .search-input {
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+@media (max-width: 480px) {
+  .main-content {
+    padding: 12px;
+  }
+
+  .notes-wrapper h1 {
+    font-size: 20px;
+  }
+}

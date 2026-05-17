@@ -1,0 +1,147 @@
+/* =========================
+   MAIN LAYOUT
+========================= */
+
+.home-container {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+
+  width: 100%;
+  max-width: 100%;
+
+  overflow-x: hidden; /* ADD THIS */
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  flex: 1;
+  margin-left: 260px;
+
+  height: 100vh;
+  overflow-y: auto;
+
+  scroll-behavior: smooth;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================
+   LANDING WRAPPER
+========================= */
+
+.landing {
+  width: 100%;
+}
+
+/* =========================
+   DASHBOARD SECTION
+========================= */
+
+.user-dashboard {
+  padding: 60px 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  background: var(--bg);
+}
+
+/* TITLE */
+.dashboard-title {
+  font-size: 32px;
+  color: var(--text);
+}
+
+/* GRID (stats + actions) */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* =========================
+   DASHBOARD HOVER EFFECT
+========================= */
+
+.dashboard-grid > *,
+.recent-notes {
+  transition: all 0.3s ease;
+  border-radius: 18px;
+  padding: 10px;
+}
+
+/* DEFAULT (slightly dim) */
+.user-dashboard:hover .dashboard-grid > *,
+.user-dashboard:hover .recent-notes {
+  opacity: 0.6;
+  transform: scale(0.98);
+}
+
+/* ACTIVE HOVER */
+.dashboard-grid > *:hover,
+.recent-notes:hover {
+  opacity: 1 !important;
+  transform: scale(1.02);
+
+  border: 1px solid white;
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+
+  background: rgba(255,255,255,0.03);
+}
+/* =========================
+   SMOOTH SCROLL SNAP (OPTIONAL UX BOOST)
+========================= */
+
+.main-content {
+  scroll-snap-type: y proximity;
+}
+
+.section {
+  scroll-snap-align: start;
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr; /* stack */
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+  }
+
+  .user-dashboard {
+    padding: 40px 15px;
+  }
+
+  .dashboard-title {
+    font-size: 24px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  .user-dashboard {
+    padding: 30px 12px;
+  }
+}
